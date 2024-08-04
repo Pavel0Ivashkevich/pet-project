@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/iar.css">
+</head>
+<body>
+  <header>
+    <div id="header">
+        <img id="banner" src="/img/fitness-banner-main.jpg">
+        <h id="adress">Красноярск ул. Ленина, д.99</h>
+        <h1 id="logo-text">Фитнес клуб</h1>
+        <img id="logo" src="/img/SPARTA.png">
+        <div class="button-container">
+          <div class="button-container">
+            <button id="firsttry" onclick="showForm()">ПРОБНОЕ ЗАНЯТИЕ</button>
+            <button id="buy" onclick="showForm()">КУПИТЬ АБОНЕМЕНТ</button>
+        </div>
+      
+      <div id="form-popup" class="form-popup">
+          <button class="close-button" onclick="closeForm()">X</button>
+          <form id="popup-form" class="popup-form" onsubmit="submitForm(event)">
+              <p>Оставьте свой номер телефона и с вами свяжется наш менеджер</p>
+              <input type="text" id="phone-number" placeholder="Введите номер телефона" required maxlength="12" onfocus="addCountryCode()" onkeypress="allowOnlyNumbers(event); limitPhoneNumberLength(event);">
+
+              <br>
+              <button type="submit">Отправить</button>
+          </form>
+          <div id="success-message" class="success-message">Заявка отправлена!</div>
+      </div>
+      
+  </header>
+    <main>
+    <div class="team"> НАША КОМАНДА</div>
+    <div class="slideshow-container">
+
+        <div class="mySlides fade">
+         
+          <img src="/img/trener 1.png" style="width:100%">
+          <div class="text">Павел</div>
+        </div>
+        
+        <div class="mySlides fade">
+          
+          <img src="/img/trener 2.png" style="width:100%">
+          <div class="text">Вероника</div>
+        </div>
+        
+        <div class="mySlides fade">
+          
+          <img src="/img/trener 3.png" style="width:100%">
+          <div class="text">Роман</div>
+        </div>
+        <div class="mySlides fade">
+            
+            <img src="/img/trener 4.png" style="width:100%">
+            <div class="text">Валерия</div>
+          </div>
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+        
+        </div>
+        <br>
+        
+        <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span> 
+          <span class="dot" onclick="currentSlide(2)"></span> 
+          <span class="dot" onclick="currentSlide(3)"></span>
+          <span class="dot" onclick="currentSlide(4)"></span>  
+        </div>
+        <div class="rooms">НАШИ НАПРАВЛЕНИЯ</div>
+        
+        <div class="wrapper">
+          <div class="carousel js-carousel">
+            <div class="carousel__showcase">
+              <img class="carousel__image js-showcase-image" src="" alt="Showcase" />
+            </div>
+            
+            <div class="carousel__controls">
+              <a class="carousel__control carousel__control_right js-prev" href="javascript:;" title="Previous"><i class="fa fa-chevron-left"></i></a><!-- /carousel__control -->
+        
+              <ul class="carousel__item-container js-item-container">
+                <li class="carousel__item">
+                  <a class="carousel__link js-carousel-link" href="javascript:;">
+                    <img class="carousel__image js-item-image" src="" alt="Kitten" />
+                  </a>
+                </li>
+        
+                <li class="carousel__item">
+                  <a class="carousel__link js-carousel-link" href="javascript:;">
+                    <img class="carousel__image js-item-image" src="" alt="Kitten" />
+                  </a>
+                </li>
+        
+                <li class="carousel__item">
+                  <a class="carousel__link js-carousel-link" href="javascript:;">
+                    <img class="carousel__image js-item-image" src="" alt="Kitten" />
+                  </a>
+                </li>
+              </ul>
+        
+              <a class="carousel__control carousel__control_right js-next" href="javascript:;" title="Next"><i class="fa fa-chevron-right"></i></a><!-- /carousel__control -->
+            </div> 
+          </div>
+        </div>
+        <div class="bar">
+          <img class="hall" src="/img/bar.png">
+          <h1 class="bar-menu">Фитнес-Бар</h1>
+      
+      <div action="" id="menu">
+          <h1> Меню </h1>
+          <ul>
+              <li v-for="item in menuitems" v-on:click="switchActive(item)" v-bind:class="{'active' : item.active}">
+                  {{ item.name }} <span> {{ item.price | price }}</span>
+              </li>
+          </ul>
+          <div class="total">
+              Итого: <span>{{ total() | price }}</span>
+          </div>     
+      </div>
+    </div>
+      <div class="under">
+          <ul>
+              <li> 
+                  <img src="/img/Phone.png">+7 (391) 999-99-99
+              </li>
+              <li class="footer-logo"> 
+                  <img src="/img/footer logo.png">
+              </li>
+              <li> 
+                  <img src="/img/Address.png">Красноярск ул. Ленина, д.99 
+              </li>
+          </ul>
+      </div>
+      
+    </main>
+      <script type="text/javascript" src="/main/iar.js"></script>
+  </body>
+  </html>
